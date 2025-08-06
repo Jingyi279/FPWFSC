@@ -1,8 +1,14 @@
 # gui_helper.py
 from ..common import bench_hardware as hw
 import sys
-# sys.path.insert(0, '/usr/local/home/cguthery/PyAO/')
-# from guis.fast_and_furious import hardware
+import warnings
+
+try:
+    sys.path.insert(0, '/usr/local/home/cguthery/PyAO/')
+    from guis.fast_and_furious import hardware
+except ImportError:
+    warnings.warn("Failed to import hardware modules")
+
 valid_instruments = ['Sim', 'NIRC2', 'Palila', 'Vampires','OSIRIS']
 
 config_info = {

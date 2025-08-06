@@ -3,6 +3,7 @@ import sys
 import warnings
 import hcipy
 import numpy as np
+from . import support_functions as sf
 
 try:
 
@@ -16,6 +17,8 @@ try:
     
 except ImportError:
     warnings.warn("Failed to import hardware modules")
+
+
     
 class OSIRISAlias:
     """
@@ -112,7 +115,7 @@ class ClosedAOSystemAlias:
         # now we need to write the cog file and load the cog file
         saved_filename = self.AO.save_cog('SAN_Centroids', new_centroids)
         self.AO.load_cog(saved_filename)
-        cogfile_data = self.AO.open_cog(fn)
+        cogfile_data = self.AO.open_cog(saved_filename)
         return cogfile_data, dm_volts
 
     def get_dm_data(self):
